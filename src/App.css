@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav-con nav {
+    font-size: 20px;
+    background-color: black;
+    color: wheat;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.opreations {
+    height: 100px;
+    background-color: #2b8181;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.opreations button {
+    padding: 10px 15px;
+    border-radius: 7px;
+    border: 1px solid wheat;
+    color: white;
+    cursor: pointer;
+}
+
+.con {
+    display: flex;
+    height: calc(100vh - 150px);
+}
+
+.op-action {
+    padding: 30px 10px;
+    background-color: #193838;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.get-result {
+    background-color: #222222;
+    padding: 20px 5px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.get-result h1,
+.add-pro h1 {
+    color: wheat;
+}
+
+.add-pro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-pro input {
+    padding: 5px 10px;
+    border-radius: 7px;
+    border: 1px solid wheat;
+    height: 35px;
+}
+
+.add-pro input::placeholder {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.477);
+}
+
+.add-pro button {
+    padding: 10px 15px;
+    border-radius: 7px;
+    border: 1px solid wheat;
+    width: 75px;
+    height: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+.prodcts {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: auto auto;
+}
+
+.ex {
+    background-color: tomato;
+    border: 1px solid wheat;
+    border-radius: 10px;
+}
+
+.ex .img {
+    background-color: blueviolet;
+    height: 130px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.ex .data {
+    background-color: rgb(216 207 206);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 120px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
