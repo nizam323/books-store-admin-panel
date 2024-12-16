@@ -12,13 +12,8 @@ function App() {
       async () => {
         try {
           setLoader(true);
-          let response = await fetch("http://localhost:3000/get", {
-            // method: "GET",
-            // headers: {
-              // "Content-Type": "application/json"
-            // }
-          })
-          let data = response.json();
+          let response = await fetch("http://localhost:3000/get")
+          let data = await response.json();
           setData(data)
           setLoader(false)
         } catch (error) {
