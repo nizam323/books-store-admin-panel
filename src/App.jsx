@@ -2,27 +2,40 @@ import { NavLink, Outlet } from 'react-router'
 import './App.css'
 import ProductCard from './components/Product-card'
 import { useEffect, useState } from 'react';
+import Loader from './components/Loader';
 
 function App() {
   const [data, setData] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
-    let cleanFn = async () => {
-      let response = await fetch("http://localhost:3000/get-products", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
+    let cleanFn =
+      async () => {
+        try {
+          setLoader(true);
+          let response = await fetch("http://localhost:3000/get", {
+            // method: "GET",
+            // headers: {
+              // "Content-Type": "application/json"
+            // }
+          })
+          let data = response.json();
+          setData(data)
+          setLoader(false)
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setLoader(false)
         }
-      })
-      let data = response;
-      setData(data)
-    }
+      }
 
-    // return () => cleanFn();
+    return () => cleanFn();
   }, [])
+
   console.log(data);
 
   return (
     <>
+      {loader && <Loader />}
       <div className="nav-con">
         <nav>
           <div className="msg">Welcome Admin [user name]</div>

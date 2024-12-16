@@ -125,9 +125,42 @@
 }
 
 .loader-con {
-    background-color: tomato;
+    background-color: #c7bdbb82;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .loader {
-    background-color: goldenrod;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    height: 50px;
+    width: 50px;
+    border: 7px dashed;
+    background-color: #d5be83;
+    animation: loader .9s infinite ease-in-out;
+}
+
+.loaderIn {
+    border-radius: 50%;
+    color: #6d5a2a;
+    height: 25px;
+    width: 25px;
+    border: 7px dashed;
+    animation: loader .9s infinite ease-in-out;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
 }
