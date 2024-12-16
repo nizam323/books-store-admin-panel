@@ -6,7 +6,22 @@ export default function UpdateProduct() {
     const [proPrice, setProPrice] = useState("");
     const [proURL, setProURL] = useState("");
 
-    function handleSubmit() { }
+    function handleSubmit() {
+        e.preventDefault();
+        fetch("http://localhost:3000/update", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                proId,
+                proName,
+                proPrice,
+                proURL
+            })
+        })
+    }
+
     return (
         <>
             <div className="add-pro">

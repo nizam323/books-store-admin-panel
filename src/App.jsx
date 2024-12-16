@@ -1,26 +1,25 @@
 import { NavLink, Outlet } from 'react-router'
 import './App.css'
 import ProductCard from './components/Product-card'
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    let cleanFn = async () => {
+      let response = await fetch("http://localhost:3000/get-products", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      let data = response;
+      setData(data)
+    }
 
-  let results = [
-    {
-      id: "1",
-      name: "aaaa",
-      price: "300"
-    },
-    {
-      id: "122",
-      name: "a3333333aaa",
-      price: "30044"
-    },
-    {
-      id: "4444441",
-      name: "aaaa4444444",
-      price: "3004444444"
-    },
-  ];
+    // return () => cleanFn();
+  }, [])
+  console.log(data);
 
   return (
     <>
@@ -42,12 +41,14 @@ function App() {
         <div className="get-result">
           <center><h1>Products List</h1></center>
           <br />
-          <div className="prodcts">
-            {results.length > 0 ?
-              results.map((items) => {
-                return (<ProductCard key={items.id} proId={items.id} proName={items.name} proPrice={items.price} />
+          <div className={data.length > 0 ? "products" : ""}>
+            {data.length > 0 ?
+              data.map((items) => {
+                return (<ProductCard key={items.id} proId={items.id} proName={items.productname} proPrice={items.productprice} />
                 )
-              }) : <h1>no products</h1>
+              }) : <div className="no-products">
+                <h1>No Products Found</h1>
+              </div>
             }
           </div>
         </div>

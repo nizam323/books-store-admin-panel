@@ -9,8 +9,8 @@ export default function ProductCard({ imgSrc, proId, proName, proPrice }) {
                 </div>
                 <div className="data">
                     <h2>Id: {proId}</h2>
-                    <h2>{proName}</h2>
-                    <h2>{proPrice}$</h2>
+                    <h2>Name: {proName}</h2>
+                    <h2>Price: {proPrice}$</h2>
                 </div>
             </div>
 

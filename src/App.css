@@ -85,7 +85,7 @@
     cursor: pointer;
 }
 
-.prodcts {
+.products {
     display: grid;
     gap: 5px;
     grid-template-columns: auto auto;
@@ -114,4 +114,20 @@
     height: 120px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+}
+
+.no-products {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(409px - 95px);
+    background: #5b6767;
+}
+
+.loader-con {
+    background-color: tomato;
+}
+
+.loader {
+    background-color: goldenrod;
 }
