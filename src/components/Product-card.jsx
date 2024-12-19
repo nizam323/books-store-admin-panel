@@ -5,7 +5,7 @@ export default function ProductCard({ imgSrc, proId, proName, proPrice }) {
         <>
             <div className="ex">
                 <div className="img">
-                    {/* <img src={imgSrc} alt="img" /> */}
+                    <img src={imgSrc} alt="img" />
                 </div>
                 <div className="data">
                     <h2>Id: {proId}</h2>

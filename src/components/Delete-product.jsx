@@ -3,10 +3,10 @@ import React, { useState } from "react";
 export default function DeleteProduct() {
     const [proId, setProId] = useState("");
 
-    function handleSubmit() {
+    function handleSubmit(e) {
         e.preventDefault();
         fetch("http://localhost:3000/delete", {
-            method: "POST",
+            method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
             },

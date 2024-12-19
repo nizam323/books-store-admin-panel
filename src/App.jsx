@@ -19,7 +19,7 @@ function App() {
         } catch (error) {
           console.log(error);
         } finally {
-          setLoader(false)
+          setLoader(false) 
         }
       }
 
@@ -52,7 +52,7 @@ function App() {
           <div className={data.length > 0 ? "products" : ""}>
             {data.length > 0 ?
               data.map((items) => {
-                return (<ProductCard key={items.id} proId={items.id} proName={items.productname} proPrice={items.productprice} />
+                return (<ProductCard key={items.id} proId={items.id} proName={items.productname} proPrice={items.productprice} imgSrc={items.productpicurl}/>
                 )
               }) : <div className="no-products">
                 <h1>No Products Found</h1>

@@ -6,10 +6,10 @@ export default function UpdateProduct() {
     const [proPrice, setProPrice] = useState("");
     const [proURL, setProURL] = useState("");
 
-    function handleSubmit() {
+    function handleSubmit(e) {
         e.preventDefault();
         fetch("http://localhost:3000/update", {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },

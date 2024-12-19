@@ -104,6 +104,11 @@
     border-top-left-radius: 10px;
 }
 
+.ex img {
+    width: 100%;
+    height: 100%;
+}
+
 .ex .data {
     background-color: rgb(216 207 206);
     padding: 15px;
@@ -144,7 +149,7 @@
     width: 50px;
     border: 7px dashed;
     background-color: #d5be83;
-    animation: loader .9s infinite ease-in-out;
+    animation: loader .9s infinite linear;
 }
 
 .loaderIn {
