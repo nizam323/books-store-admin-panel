@@ -4,7 +4,7 @@ import ProductCard from './components/Product-card'
 import { useEffect, useState } from 'react';
 import Loader from './components/Loader';
 
-function App() {
+function AdminPanel() {
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
@@ -74,4 +74,4 @@ function App() {
   )
 }
 
-export default App
+export default AdminPanel

@@ -161,10 +161,16 @@
     animation: loader .9s infinite ease-in-out;
 }
 
+.active {
+    border: 3px solid #d3d3d3;
+    border-radius: 12px;
+}
+
 @keyframes loader {
     0% {
         transform: rotate(0deg)
     }
+
     100% {
         transform: rotate(360deg)
     }
