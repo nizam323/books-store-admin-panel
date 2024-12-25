@@ -9,22 +9,27 @@ const productSlice = createSlice({
     initialState,
     reducers: {
         setProducts: (state, action) => {
-            state.products = action.payload;
+            state.products = Array.isArray(action.payload) ? action.payload : [];
         },
         addProduct: (state, action) => {
+            if (!Array.isArray(state.products)) {
+                state.products = [];
+            }
             state.products.push(action.payload);
         },
         updateProduct: (state, action) => {
-            const index = state.products.findIndex((product) => product.id == action.payload.proId);
-            console.log(action.payload);
-            console.log(index);
+            const { proId, proName, proPrice, proURL } = action.payload;
+            const index = state.products.findIndex((product) => product.id == proId);
 
-            if (index != -1) {
-                state.products[index] == action.payload;
+            if (index !== -1) {
+                const product = state.products[index];
+                if (proName != "") product.productname = proName;
+                if (proPrice != "") product.productprice = proPrice;
+                if (proURL != "") product.productpicurl = proURL;
             }
         },
         deleteProduct: (state, action) => {
-            state.products = state.products.filter((product) => product.id !== action.payload);
+            state.products = state.products.filter((product) => product.id != action.payload);
         },
     },
 });

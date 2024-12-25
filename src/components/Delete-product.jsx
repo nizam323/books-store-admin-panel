@@ -15,7 +15,7 @@ export default function DeleteProduct() {
             },
             body: JSON.stringify({ proId })
         })
-        if (response.status == 200) dispatch(deleteProduct({ proId }))
+        if (response.status == 200) dispatch(deleteProduct(proId))
     }
     return (
         <>

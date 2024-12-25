@@ -16,7 +16,13 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       setLoader(true)
-      const response = await fetch("http://localhost:3000/get");
+      const response = await fetch("http://localhost:3000/get", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ userEmail })
+      })
       const data = await response.json();
       dispatch(setProducts(data));
       setLoader(false)

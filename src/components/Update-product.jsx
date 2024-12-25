@@ -25,7 +25,7 @@ export default function UpdateProduct() {
         })
         if (response.ok) {
             dispatch(updateProduct({
-                proId,
+                proId: parseInt(proId, 10),
                 proName,
                 proPrice,
                 proURL

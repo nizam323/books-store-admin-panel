@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addProduct, setProducts } from "../redux/slices/productsDataSlice";
+import { addProduct } from "../redux/slices/productsDataSlice";
 
 export default function AddProduct() {
     const [proName, setProName] = useState("")
@@ -24,11 +24,8 @@ export default function AddProduct() {
             })
         })
         if (response.ok) {
-            dispatch(addProduct({
-                proName,
-                proPrice,
-                proURL
-            }));
+            const { product } = await response.json();
+            dispatch(addProduct(product));
         }
     }
 
