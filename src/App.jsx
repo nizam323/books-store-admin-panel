@@ -3,42 +3,39 @@ import './App.css'
 import ProductCard from './components/Product-card'
 import { useEffect, useState } from 'react';
 import Loader from './components/Loader';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProducts } from './redux/slices/productsDataSlice';
 
 function App() {
-  const [data, setData] = useState([]);
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
-
-  let fetchProducts = async () => {
-    try {
-      setLoader(true);
-      let response = await fetch("http://localhost:3000/get")
-      let data = await response.json();
-      setData(data)
-      setLoader(false)
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoader(false)
-    }
-  }
+  const userEmail = window.localStorage.getItem("userEmail");
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);
 
   useEffect(() => {
-    fetchProducts()
-  }, [])
+    const fetchProducts = async () => {
+      setLoader(true)
+      const response = await fetch("http://localhost:3000/get");
+      const data = await response.json();
+      dispatch(setProducts(data));
+      setLoader(false)
+    };
 
-  console.log(data);
+    fetchProducts();
+  }, [dispatch]);
 
   return (
     <>
       {loader && <Loader />}
       <div className="nav-con">
         <nav>
-          <div className="msg">Welcome Admin [user name]</div>
+          <div className="msg1">Welcome Admin [{userEmail}]</div>
           <pre>       </pre>
-          <div style={{ cursor: "pointer" }} className="msg" onClick={
+          <div className="msg" onClick={
             () => {
               window.localStorage.removeItem("token")
+              window.localStorage.removeItem("userEmail")
               navigate("/")
             }
           }>SignOut</div>
@@ -57,9 +54,9 @@ function App() {
         <div className="get-result">
           <center><h1>Products List</h1></center>
           <br />
-          <div className={data.length > 0 ? "products" : ""}>
-            {data.length > 0 ?
-              data.map((items) => {
+          <div className={products.length > 0 ? "products" : ""}>
+            {products.length > 0 ?
+              products.map((items) => {
                 return (<ProductCard
                   key={items.id}
                   proId={items.id}

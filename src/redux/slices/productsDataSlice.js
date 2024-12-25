@@ -15,9 +15,12 @@ const productSlice = createSlice({
             state.products.push(action.payload);
         },
         updateProduct: (state, action) => {
-            const index = state.products.findIndex((product) => product.id === action.payload.id);
-            if (index !== -1) {
-                state.products[index] = action.payload;
+            const index = state.products.findIndex((product) => product.id == action.payload.proId);
+            console.log(action.payload);
+            console.log(index);
+
+            if (index != -1) {
+                state.products[index] == action.payload;
             }
         },
         deleteProduct: (state, action) => {
@@ -27,3 +30,5 @@ const productSlice = createSlice({
 });
 
 export const { setProducts, addProduct, updateProduct, deleteProduct } = productSlice.actions;
+
+export default productSlice.reducer;

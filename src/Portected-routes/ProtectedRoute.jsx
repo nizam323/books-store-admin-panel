@@ -20,8 +20,7 @@ export default function ProtectedRoutes({ children }) {
             }
         })
             .then((response) => {
-                if (response.status == 200) setResponse(true)
-                else setResponse(false)
+                setResponse(response)
             })
             .catch((error) => {
                 console.error(error)
@@ -30,10 +29,11 @@ export default function ProtectedRoutes({ children }) {
 
     }, [navigate])
 
-    if (response) {
+    if (response.status == 200) {
         return <>{children}</>
     }
-    else {
+    else if (response.status == 403) {
+        window.localStorage.removeItem("token")
         navigate("/")
     }
 } 

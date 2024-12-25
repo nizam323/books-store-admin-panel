@@ -24,6 +24,7 @@ export default function SignIn() {
             .then((response) => response.json())
             .then((data) => {
                 window.localStorage.setItem("token", data.token)
+                window.localStorage.setItem("userEmail", email)
                 navigate("/admin-panel")
             })
             .catch((error) => console.log(error))

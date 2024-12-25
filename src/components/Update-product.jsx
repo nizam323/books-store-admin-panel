@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { updateProduct } from "../redux/slices/productsDataSlice";
+import { useDispatch } from "react-redux";
 
 export default function UpdateProduct() {
     const [proId, setProId] = useState("");
     const [proName, setProName] = useState("");
     const [proPrice, setProPrice] = useState("");
     const [proURL, setProURL] = useState("");
+    const dispatch = useDispatch();
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/update", {
+        const response = await fetch("http://localhost:3000/update", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -20,6 +23,14 @@ export default function UpdateProduct() {
                 proURL
             })
         })
+        if (response.ok) {
+            dispatch(updateProduct({
+                proId,
+                proName,
+                proPrice,
+                proURL
+            }));
+        }
     }
 
     return (

@@ -1,17 +1,21 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteProduct } from "../redux/slices/productsDataSlice";
 
 export default function DeleteProduct() {
     const [proId, setProId] = useState("");
+    const dispatch = useDispatch();
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/delete", {
+        const response = await fetch("http://localhost:3000/delete", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ proId })
         })
+        if (response.status == 200) dispatch(deleteProduct({ proId }))
     }
     return (
         <>

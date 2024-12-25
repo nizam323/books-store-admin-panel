@@ -166,6 +166,20 @@
     border-radius: 12px;
 }
 
+.msg {
+    cursor: pointer;
+    background-color: red;
+    color: ghostwhite;
+    padding: 5px 10px;
+    border-radius: 7px;
+    transition: background-color;
+    transition-duration: .9s;
+}
+
+.msg:hover {
+    background-color: rgba(255, 0, 0, 0.628);
+}
+
 @keyframes loader {
     0% {
         transform: rotate(0deg)

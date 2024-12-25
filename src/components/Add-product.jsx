@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addProduct, setProducts } from "../redux/slices/productsDataSlice";
 
 export default function AddProduct() {
     const [proName, setProName] = useState("")
     const [proPrice, setProPrice] = useState("")
     const [proURL, setProURL] = useState("")
+    const dispatch = useDispatch();
+    const ownerEmail = window.localStorage.getItem("userEmail");
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/add", {
+        const response = await fetch("http://localhost:3000/add", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -15,9 +19,17 @@ export default function AddProduct() {
             body: JSON.stringify({
                 proName,
                 proPrice,
-                proURL
+                proURL,
+                ownerEmail
             })
         })
+        if (response.ok) {
+            dispatch(addProduct({
+                proName,
+                proPrice,
+                proURL
+            }));
+        }
     }
 
     return (
