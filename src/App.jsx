@@ -8,24 +8,23 @@ function App() {
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
-  
-  useEffect(() => {
-    let cleanFn =
-      async () => {
-        try {
-          setLoader(true);
-          let response = await fetch("http://localhost:3000/get")
-          let data = await response.json();
-          setData(data)
-          setLoader(false)
-        } catch (error) {
-          console.log(error);
-        } finally {
-          setLoader(false)
-        }
-      }
 
-    return () => cleanFn();
+  let fetchProducts = async () => {
+    try {
+      setLoader(true);
+      let response = await fetch("http://localhost:3000/get")
+      let data = await response.json();
+      setData(data)
+      setLoader(false)
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoader(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts()
   }, [])
 
   console.log(data);
@@ -61,7 +60,13 @@ function App() {
           <div className={data.length > 0 ? "products" : ""}>
             {data.length > 0 ?
               data.map((items) => {
-                return (<ProductCard key={items.id} proId={items.id} proName={items.productname} proPrice={items.productprice} imgSrc={items.productpicurl} />
+                return (<ProductCard
+                  key={items.id}
+                  proId={items.id}
+                  proName={items.productname}
+                  proPrice={items.productprice}
+                  imgSrc={items.productpicurl}
+                />
                 )
               }) : <div className="no-products">
                 <h1>No Products Found</h1>
