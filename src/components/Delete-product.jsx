@@ -5,6 +5,7 @@ import { deleteProduct } from "../redux/slices/productsDataSlice";
 export default function DeleteProduct() {
     const [proId, setProId] = useState("");
     const dispatch = useDispatch();
+    const ownerEmail = window.localStorage.getItem("userEmail");
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -13,7 +14,7 @@ export default function DeleteProduct() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ proId })
+            body: JSON.stringify({ proId, ownerEmail })
         })
         if (response.status == 200) dispatch(deleteProduct(proId))
     }

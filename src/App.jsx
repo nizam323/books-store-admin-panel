@@ -36,7 +36,7 @@ function App() {
       {loader && <Loader />}
       <div className="nav-con">
         <nav>
-          <div className="msg1">Welcome Admin [{userEmail}]</div>
+          <div className="msg1">Welcome Admin [ {userEmail} ]</div>
           <pre>       </pre>
           <div className="msg" onClick={
             () => {

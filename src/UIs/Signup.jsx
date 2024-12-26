@@ -34,7 +34,7 @@ export default function SignUp() {
             <div className={styles.formcon}>
                 <div className={styles.logincon}>
                     <div className={styles.img}>
-                    <h1>Signup as Admin</h1>
+                        <h1 style={{ textAlign: "center" }}>Signup as Admin</h1>
                     </div>
                     <div className={styles.unameemail}>
                         <form method="POST" onSubmit={handleSubmit}>

@@ -35,7 +35,7 @@ export default function SignIn() {
             <div className={styles.formcon}>
                 <div className={styles.logincon}>
                     <div className={styles.img}>
-                        <h1>Signin as Admin</h1>
+                        <h1 style={{ textAlign: "center" }}>Signin as Admin</h1>
                     </div>
                     <div className={styles.unameemail}>
                         <form method="POST" onSubmit={handleSubmit}>

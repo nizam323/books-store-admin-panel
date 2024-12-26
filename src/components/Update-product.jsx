@@ -8,7 +8,8 @@ export default function UpdateProduct() {
     const [proPrice, setProPrice] = useState("");
     const [proURL, setProURL] = useState("");
     const dispatch = useDispatch();
-
+    const ownerEmail = window.localStorage.getItem("userEmail");
+    
     async function handleSubmit(e) {
         e.preventDefault();
         const response = await fetch("http://localhost:3000/update", {
@@ -20,7 +21,8 @@ export default function UpdateProduct() {
                 proId,
                 proName,
                 proPrice,
-                proURL
+                proURL,
+                ownerEmail
             })
         })
         if (response.ok) {

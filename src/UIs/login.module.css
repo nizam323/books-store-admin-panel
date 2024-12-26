@@ -20,7 +20,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 75px;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
 }
 
 .unameemail .input {
@@ -70,4 +72,10 @@
     color: #50575e;
     text-decoration: none;
     margin-top: 15px;
+}
+
+@media only screen and (min-width:900px) and (max-width:1600px) {
+    .formcon {
+        padding: 0 265px;
+    }
 }
