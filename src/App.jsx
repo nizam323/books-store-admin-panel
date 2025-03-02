@@ -5,8 +5,12 @@ import { useEffect, useState } from 'react';
 import Loader from './components/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProducts } from './redux/slices/productsDataSlice';
+import { useContext } from 'react';
+import { globalVariabel } from './main';
+
 
 function App() {
+  const serverAddress = useContext(globalVariabel);
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
   const userEmail = window.localStorage.getItem("userEmail");
@@ -16,7 +20,7 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       setLoader(true)
-      const response = await fetch("http://localhost:3000/get", {
+      const response = await fetch(serverAddress+"get-admins-products", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"

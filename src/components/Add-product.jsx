@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../redux/slices/productsDataSlice";
+import { globalVariabel } from "../main";
+
 
 export default function AddProduct() {
+    const serverAddress = useContext(globalVariabel);
     const [proName, setProName] = useState("")
     const [proPrice, setProPrice] = useState("")
     const [proURL, setProURL] = useState("")
@@ -11,7 +14,7 @@ export default function AddProduct() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const response = await fetch("http://localhost:3000/add", {
+        const response = await fetch(serverAddress+"add", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
