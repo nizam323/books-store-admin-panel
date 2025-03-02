@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../redux/slices/productsDataSlice";
+import { globalVariabel } from "../main";
+
 
 export default function DeleteProduct() {
+    const serverAddress = useContext(globalVariabel);
     const [proId, setProId] = useState("");
     const dispatch = useDispatch();
     const ownerEmail = window.localStorage.getItem("userEmail");
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const response = await fetch("http://localhost:3000/delete", {
+        const response = await fetch(serverAddress+"delete", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

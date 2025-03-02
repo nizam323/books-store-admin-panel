@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import styles from "./login.module.css"
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { globalVariabel } from "../main";
+
 
 export default function SignIn() {
+    const serverAddress = useContext(globalVariabel);
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [isAdmin, setIsAdmin] = useState(true);
@@ -10,7 +14,7 @@ export default function SignIn() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/signin", {
+        fetch(serverAddress+"signin", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

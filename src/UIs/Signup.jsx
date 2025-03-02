@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./login.module.css"
 import { Link } from "react-router-dom";
+import { globalVariabel } from "../main";
+
 
 export default function SignUp() {
+    const serverAddress = useContext(globalVariabel); 
     const [username, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -12,7 +15,7 @@ export default function SignUp() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/signup", {
+        fetch(serverAddress+"signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

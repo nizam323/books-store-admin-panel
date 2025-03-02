@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { globalVariabel } from "../main";
+
 
 export default function ProtectedRoutes({ children }) {
+    const serverAddress = useContext(globalVariabel);
     const navigate = useNavigate();
     const [response, setResponse] = useState("");
 
@@ -13,7 +16,7 @@ export default function ProtectedRoutes({ children }) {
             return;
         }
 
-        fetch("http://localhost:3000/checkauth", {
+        fetch(serverAddress+"checkauth", {
             method: "GET",
             headers: {
                 authorization: "bearer " + token
